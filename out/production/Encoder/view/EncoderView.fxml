@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EncoderOverviewController">
+   <children>
+      <Text layoutX="615.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ключ :" wrappingWidth="69.99999824911356">
+         <font>
+            <Font name="Century" size="18.0" />
+         </font>
+      </Text>
+      <Button fx:id="openBut" layoutX="36.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleOpenFileText" prefHeight="31.0" prefWidth="150.0" text="Открыть файл" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="Century" size="15.0" />
+         </font></Button>
+      <Button fx:id="saveBut" layoutX="1039.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleSaveFileText" prefHeight="31.0" prefWidth="100.0" text="Сохранить" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="Century" size="15.0" />
+         </font></Button>
+      <Button layoutX="1156.0" layoutY="556.0" mnemonicParsing="false" onAction="#handleOpenHelp" prefHeight="50.0" prefWidth="50.0" text="?" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="20.0">
+         <font>
+            <Font name="Century" size="18.0" />
+         </font>
+      </Button>
+      <TextArea fx:id="primordialArea" layoutX="14.0" layoutY="103.0" prefHeight="230.0" prefWidth="500.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="100.0" />
+      <TextArea fx:id="resultArea" layoutX="724.0" layoutY="97.0" prefHeight="230.0" prefWidth="500.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="100.0" />
+      <HBox fx:id="readProgressBox" layoutX="190.0" layoutY="42.0" prefHeight="45.0" prefWidth="330.0" visible="false" AnchorPane.bottomAnchor="509.0">
+         <children>
+            <ProgressIndicator fx:id="readProgress" prefHeight="39.0" prefWidth="36.0" progress="0.0" />
+            <Label text="Загружаем данные файла..">
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Century Gothic Italic" size="14.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" onAction="#stopRead" text="Отмена">
+               <font>
+                  <Font name="Century" size="12.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="25.0" top="8.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox fx:id="keyBox" layoutX="579.0" layoutY="46.0" prefHeight="38.0" prefWidth="134.0">
+         <children>
+            <Button fx:id="minusBut" mnemonicParsing="false" onAction="#subStep" prefHeight="39.0" prefWidth="39.0" text="-">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Button>
+            <TextField fx:id="keyField" alignment="CENTER" prefHeight="39.0" prefWidth="56.0" text="0">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font></TextField>
+            <Button fx:id="plusBut" mnemonicParsing="false" onAction="#addStep" prefHeight="39.0" prefWidth="39.0" text="+">
+               <font>
+                  <Font name="Century Gothic Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <Button layoutX="20.0" layoutY="550.0" mnemonicParsing="false" onAction="#handleOpenWindowFileEncode" prefHeight="40.0" prefWidth="250.0" text="Шифрование файлов" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0">
+         <font>
+            <Font name="Century" size="18.0" />
+         </font></Button>
+      <Pane layoutX="540.0" layoutY="200.0" prefHeight="130.0" prefWidth="221.0" style="-fx-border-color: #c1c1c1; -fx-border-radius: 5px;">
+         <children>
+            <HBox fx:id="typeBox" alignment="TOP_RIGHT" layoutX="10.0" layoutY="35.0" prefHeight="31.0" prefWidth="200.0">
+               <children>
+                  <ToggleButton fx:id="text_coding_but" minWidth="100.0" mnemonicParsing="false" onAction="#checkMode" prefHeight="25.0" prefWidth="80.0" selected="true" text="Текстовый">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="type_of_coding" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </ToggleButton>
+                  <ToggleButton fx:id="binary_coding_but" minWidth="100.0" mnemonicParsing="false" onAction="#checkMode" prefHeight="25.0" prefWidth="80.0" text="Бинарный">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="type_of_coding" />
+                     </toggleGroup>
+                     <font>
+                        <Font name="Century" size="15.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </HBox>
+            <Text layoutX="66.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Режим :" textAlignment="CENTER" wrappingWidth="91.0">
+               <font>
+                  <Font name="Century" size="18.0" />
+               </font>
+            </Text>
+            <Line endX="100.0" layoutX="111.0" layoutY="76.0" startX="-100.0" style="-fx-opacity: .4;" />
+            <HBox fx:id="modeBox" layoutX="10.0" layoutY="86.0" prefHeight="30.0" prefWidth="201.0">
+               <children>
+                  <ToggleButton fx:id="mode_encode_but" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#checkMode" prefHeight="25.0" prefWidth="80.0" selected="true" text="Зашифровать">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="type_of_file" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="mode_decode_but" minHeight="30.0" minWidth="100.0" mnemonicParsing="false" onAction="#checkMode" text="Расшифровать" toggleGroup="$type_of_file">
+                     <font>
+                        <Font name="Century" size="12.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <Pane layoutX="375.0" layoutY="364.0" prefHeight="176.0" prefWidth="550.0" style="-fx-border-color: #c1c1c1; -fx-border-radius: 5px;" AnchorPane.leftAnchor="375.0" AnchorPane.rightAnchor="375.0">
+         <children>
+            <Label layoutX="199.0" layoutY="14.0" prefHeight="23.0" prefWidth="166.0" text="Диапазон ключей:">
+               <font>
+                  <Font name="Century" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="openFileRangeBut" layoutX="10.0" layoutY="110.0" mnemonicParsing="false" onAction="#handleChooseFileRange" prefHeight="31.0" prefWidth="100.0" text="Выбрать">
+               <font>
+                  <Font name="Century" size="15.0" />
+               </font></Button>
+            <Label fx:id="messageLabel" layoutX="119.0" layoutY="125.0" maxWidth="325.0" text="Файл для сохранения результата не выбран">
+               <font>
+                  <Font name="Century Gothic" size="14.0" />
+               </font></Label>
+            <ProgressBar fx:id="progressRange" layoutX="10.0" layoutY="150.0" prefHeight="23.0" prefWidth="533.0" progress="0.0" />
+            <Button fx:id="controlRangeBut" layoutX="443.0" layoutY="110.0" minWidth="100.0" mnemonicParsing="false" onAction="#handleStartRange" style="-fx-text-fill: green;" text="Начать">
+               <font>
+                  <Font name="Century" size="15.0" />
+               </font></Button>
+            <HBox fx:id="rangeBox" layoutX="214.0" layoutY="47.0" prefHeight="31.0" prefWidth="126.0">
+               <children>
+                  <TextField fx:id="leftKeyField" alignment="CENTER" prefHeight="31.0" prefWidth="50.0" text="0">
+                     <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                     </font></TextField>
+                  <Label text="-">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" top="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="rightKeyField" alignment="CENTER" prefHeight="31.0" prefWidth="50.0" text="0">
+                     <font>
+                        <Font name="Century Gothic Bold" size="15.0" />
+                     </font></TextField>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+      <ImageView fx:id="imageView" fitHeight="70.0" fitWidth="70.0" layoutX="546.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="611.0" AnchorPane.topAnchor="110.0">
+         <image>
+            <Image url="@../../resources/images/switch.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

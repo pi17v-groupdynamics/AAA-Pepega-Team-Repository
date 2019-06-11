@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="258.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.EncryptionFilesController">
+   <children>
+      <Button fx:id="chooseFileBut" layoutX="22.0" layoutY="167.0" mnemonicParsing="false" onAction="#handlechooseFile" text="Выбрать" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="10.0">
+         <font>
+            <Font name="Century" size="18.0" />
+         </font>
+      </Button>
+      <ProgressBar fx:id="progressEncryption" layoutX="93.0" layoutY="156.0" minHeight="30.0" prefHeight="30.0" prefWidth="410.0" progress="0.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Button fx:id="startOrPauseBut" layoutX="498.0" layoutY="167.0" mnemonicParsing="false" onAction="#playOrPause" style="-fx-text-fill: green;" text="Начать" textFill="#363936" AnchorPane.bottomAnchor="45.0" AnchorPane.rightAnchor="10.0">
+         <font>
+            <Font name="Century" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="messageLabel" layoutX="115.0" layoutY="185.0" maxWidth="350.0" text="Выберите файл для шифрования" AnchorPane.bottomAnchor="45.0" AnchorPane.leftAnchor="115.0">
+         <font>
+            <Font name="Century Gothic Italic" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="189.0" layoutY="14.0" prefHeight="144.0" prefWidth="217.0">
+         <children>
+            <HBox fx:id="keyBox" layoutX="30.0" layoutY="47.0" prefHeight="41.0" prefWidth="150.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#keySub" prefHeight="40.0" prefWidth="40.0" text="-">
+                     <font>
+                        <Font name="Century Gothic Bold" size="18.0" />
+                     </font>
+                  </Button>
+                  <TextField fx:id="keyField" alignment="CENTER" prefHeight="40.0" prefWidth="70.0" text="0">
+                     <font>
+                        <Font name="Century Gothic Bold" size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button mnemonicParsing="false" onAction="#keyPlus" prefHeight="40.0" prefWidth="40.0" text="+">
+                     <font>
+                        <Font name="Century Gothic Bold" size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+            <Label layoutX="75.0" layoutY="10.0" text="Ключ">
+               <font>
+                  <Font name="Century" size="24.0" />
+               </font>
+            </Label>
+            <Line endX="82.0" layoutX="103.0" layoutY="95.0" startX="-77.0" />
+            <HBox fx:id="modeBox" layoutY="103.0" prefHeight="26.0" prefWidth="217.0">
+               <children>
+                  <ToggleButton fx:id="modeEnBut" mnemonicParsing="false" selected="true" text="Зашифровать">
+                     <font>
+                        <Font name="Century" size="13.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="mode" />
+                     </toggleGroup>
+                  </ToggleButton>
+                  <ToggleButton fx:id="modeDeBut" mnemonicParsing="false" text="Расшифровать" toggleGroup="$mode">
+                     <font>
+                        <Font name="Century" size="13.0" />
+                     </font>
+                  </ToggleButton>
+               </children>
+            </HBox>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
